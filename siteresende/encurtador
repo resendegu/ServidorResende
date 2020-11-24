@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Encurtador de Links</title>
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./arquivos/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="./arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-performance.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-database.js"></script>
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <script src="./arquivos/encurtador.js"></script>
+
+    <!-- Site -->
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+          <a class="navbar-brand" href="./"><img src="./images/logoresende2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Resende's Server</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./">Início</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login">Login/Cadastro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./imprimir">Arquivos p/ imprimir</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./sobre">Sobre</a>
+              </li>
+            </ul>
+          </div>
+          <a href="./login"><img src="./images/profile_placeholder.png" class="rounded float-right" width="40px" id="profilePic"></a>
+        </nav>
+      </header>
+  
+      <!-- Begin page content -->
+        <div class="container">
+            <label for="link">Cole o link/URL para encurtar:</label>
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Link/URL:</span>
+            </div>
+            <input type="text" class="form-control" id="link" aria-describedby="basic-addon3">
+            </div>
+            <label for="nomeNovo">Crie um ID de acesso:</label>
+            <span class="text-muted">(este será o ID para encurtar)</span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">linkresende.web.app#</label>
+                </div>
+                <input type="text" id="nomeNovo" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                
+            </div>
+            <button class="btn btn-secondary btn-md btn-block" type="button" onclick="geraLink()">Gerar ID Aleatório</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="verificaLink()">Encurtar</button>
+        </div>
+  
+      <footer class="footer" style="background-color:dodgerblue;">
+        <div class="container" style="color: white;">
+            <a href="./sobre" style="text-decoration: none; color: white;">Gustavo Resende</a>&copy;
+        </div>
+      </footer>
+      <script src="./arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+      <script src="./arquivos/app.js"></script>
+</body>
+</html>

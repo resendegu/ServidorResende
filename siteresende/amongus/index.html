@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Among Us</title>
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+<body background="./images/stars.jpg" bgproperties="fixed">
+    <!-- Modal -->
+    <div class="modal fade" id="criaJogo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Criando um jogo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Apelido</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Digite um apelido" aria-label="Digite um apelido" aria-describedby="basic-addon1" id="nickname">
+                  </div>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        Impostores:&nbsp;
+                        <label class="btn btn-secondary btn-sm active">
+                            <input type="radio" name="optionsImpostor" id="option1" onchange="limitaMax(1)"> 1
+                        </label>
+                        <label class="btn btn-secondary btn-sm">
+                            <input type="radio" name="optionsImpostor" id="option2" onchange="limitaMax(2)"> 2
+                        </label>
+                        <label class="btn btn-secondary btn-sm">
+                            <input type="radio" name="optionsImpostor" id="option3" onchange="limitaMax(3)"> 3
+                        </label>
+                    </div>
+                  <br><br>
+                
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            Máx. jogadores:&nbsp;
+                        <label class="btn btn-secondary btn-sm active" id="labelOption4">
+                            <input type="radio" name="options" id="option4" onchange="jogadores(4)"> 4
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption5">
+                            <input type="radio" name="options" id="option5" onchange="jogadores(5)"> 5
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption6">
+                            <input type="radio" name="options" id="option6" onchange="jogadores(6)"> 6
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption7">
+                            <input type="radio" name="options" id="option7" onchange="jogadores(7)"> 7
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption8">
+                            <input type="radio" name="options" id="option8" onchange="jogadores(8)"> 8
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption9">
+                            <input type="radio" name="options" id="option9" onchange="jogadores(9)"> 9
+                        </label>
+                        <label class="btn btn-secondary btn-sm" id="labelOption10">
+                            <input type="radio" name="options" id="option10" onchange="jogadores(10)"> 10
+                        </label>
+                    </div>
+                    <div class="container" id="resumo"></div>
+                    <div class="container" id="jogadores"></div>
+                    <div id="warn" style="color: red;"></div>
+                  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="criarJogo()" id="cria">Criar Jogo</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="entraJogo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Entrar em um jogo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Apelido</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Digite um apelido" aria-label="Digite um apelido" aria-describedby="basic-addon1" id="nicknameEntrar">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Cód. da sala</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Digite o código" aria-label="Digite o código" aria-describedby="basic-addon1" id="codEntrar">
+                </div>
+                    <div id="warn2" style="color: red;"></div>
+                  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="entraSala()" id="entra">Entrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--Modal de erros-->
+    <div class="modal" tabindex="-1" role="dialog" id="erros">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Um erro ocorreu</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="textoErro"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+      <div class="container">
+          <div class="container" id="logoJogo">
+              <img src="./images/testelogo.png" alt="logo" class="img-fluid" id="imgLogo">
+          </div>
+          <div class="container" id="telaInicial" style="margin-top: 20px;">
+            <button type="button" class="btn btn-outline-light btn-lg btn-block" data-toggle="modal" data-target="#criaJogo">Criar um jogo</button>
+            <button type="button" class="btn btn-outline-light btn-lg btn-block" data-toggle="modal" data-target="#entraJogo">Entrar em um jogo</button>
+            <br> <br>
+            <button type="button" class="btn btn-outline-light btn-lg btn-block" onclick="window.location = 'comojogar'">Como Jogar</button>
+            <button type="button" class="btn btn-outline-light btn-lg btn-block" onclick="window.location = 'sobre'">Sobre</button>
+          </div>
+          <!--Tela da sala-->
+          <div class="container" id="telaSala" style="display: none;">
+            <p>Cód. da sala: <label id="mostraCod"></label></p>
+            <button type="button" class="btn btn-outline-light btn-lg btn-block" data-toggle="modal" data-target="#criaJogo">+ Add task</button>
+          </div>
+      </div>
+      <!-- Firebase App is always required and must be first -->
+        <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+        <script src="/__/firebase/7.17.1/firebase-messaging.js"></script>
+        <script src="/__/firebase/7.17.1/firebase-performance.js"></script>
+        <script src="/__/firebase/7.17.1/firebase-database.js"></script>
+        <script src="/__/firebase/init.js"></script>
+        <script src="./js/app.js"></script>
+      <script>
+          var impostores
+          var qtdJogadores
+          function limitaMax(opcao) {
+            impostores = opcao
+            document.getElementById('resumo').innerText = `${opcao} impostor(es)`
+              if (opcao == 1) {
+                  document.getElementById('option4').disabled == false
+                  document.getElementById('labelOption4').className = "btn btn-secondary btn-sm"
+                  document.getElementById('option5').disabled == false
+                  document.getElementById('labelOption5').className = "btn btn-secondary btn-sm"
+                  document.getElementById('option6').disabled == false
+                  document.getElementById('labelOption6').className = "btn btn-secondary btn-sm"
+                  document.getElementById('option7').disabled == false
+                  document.getElementById('labelOption7').className = "btn btn-secondary btn-sm"
+                  document.getElementById('option8').disabled == false
+                  document.getElementById('labelOption8').className = "btn btn-secondary btn-sm"
+              } else if (opcao == 2) {
+                document.getElementById('option4').disabled == true
+                document.getElementById('labelOption4').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option5').disabled == true
+                document.getElementById('labelOption5').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option6').disabled == true
+                document.getElementById('labelOption6').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option7').disabled == false
+                document.getElementById('labelOption7').className = "btn btn-secondary btn-sm"
+                document.getElementById('option8').disabled == false
+                document.getElementById('labelOption8').className = "btn btn-secondary btn-sm"
+              } else if (opcao == 3) {
+                document.getElementById('option4').disabled == true
+                document.getElementById('labelOption4').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option5').disabled == true
+                document.getElementById('labelOption5').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option6').disabled == true
+                document.getElementById('labelOption6').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option7').disabled == true
+                document.getElementById('labelOption7').className = "btn btn-secondary btn-sm disabled"
+                document.getElementById('option8').disabled == true
+                document.getElementById('labelOption8').className = "btn btn-secondary btn-sm disabled"
+              }
+          }
+
+          function jogadores(qtd) {
+            qtdJogadores = qtd
+            document.getElementById('jogadores').innerText = `${qtd} jogadores`
+          }
+
+          function criarJogo() {
+              if (document.getElementById('nickname') == '' || qtdJogadores == undefined || impostores == undefined) {
+                  document.getElementById('warn').innerText = 'Insira todas as informações corretamente'
+              } else {
+                let amongusRef = firebase.database().ref('ServidorResende/amongus/salas')
+                let botao = document.getElementById('cria')
+                let cod
+                botao.disabled = true
+                botao.innerHTML = '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>&nbsp;Criando jogo...'
+                amongusRef.child(codigo()).once("value").then(snapshot => {
+                    console.log(snapshot.exists())
+                    if (snapshot.exists() == true) {
+                        criarJogo()
+                    } else if (snapshot.exists() == false) {
+                        criaDefinitivo(snapshot.key)
+                    }
+                }) 
+              }
+            
+            }
+            function codigo() {
+                var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var aleatorio = '';
+                for (var i = 0; i < 6; i++) {
+                    var rnum = Math.floor(Math.random() * letras.length);
+                    aleatorio += letras.substring(rnum, rnum + 1);
+                }
+                return aleatorio;
+            }
+
+            function criaDefinitivo(cod) {
+                let amongusRef = firebase.database().ref('ServidorResende/amongus/salas')
+                let nome = document.getElementById('nickname').value
+                let infos = {
+                    codSala: cod,
+                    adm: nome,
+                    impostores: impostores,
+                    maxJogadores: qtdJogadores
+                }
+
+                amongusRef.child(cod).set(infos, 
+                    function (error) {
+                        if (error) {
+                            document.getElementById('cria').className = 'btn btn-danger'
+                            document.getElementById('cria').innerText = 'Erro'
+                            alert(error.message)
+                        }
+                    }
+                )
+                entraSala(cod, true)
+            }
+      </script>
+      
+
+
+
+</body>
+</html>

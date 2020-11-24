@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resende's Login</title>
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./arquivos/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="./arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-performance.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-database.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-storage.js"></script>
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <!-- Site -->
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+          <a class="navbar-brand" href="./"><img src="./images/logoresende2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Resende's Server</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./">Início</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./login">Login/Cadastro <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./imprimir">Arquivos p/ imprimir</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./sobre">Sobre</a>
+              </li>
+            </ul>
+          </div>
+          <a href="./login"><img src="./images/profile_placeholder.png" class="rounded float-right" width="40px" id="profilePic"></a>
+        </nav>
+      </header>
+  
+      <!-- Begin page content -->
+      <div class="container">
+        <div id="logado">
+            <div class="row">
+                <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title" id="nome">Nome</h5>
+                    <a href="#" onclick="alteraFoto()"><img src="./images/profile_placeholder.png" id="foto" class="rounded float-left" width="80px" style="margin-right: 10px;"></a>
+                    <label class="card-text" id="email" style="font-size: small;">Email</label>
+                    <br>
+                    <label style="font-size: small;">Status do E-mail: </label>
+                      <label style="font-size: small;" id='emailVerificado'></label>
+                      <br><br>
+                      <button onclick="alteraFoto()" class="btn btn-primary btn-sm">Alterar foto</button>
+                      <br><br>
+                      <button type="button" id="sair" onclick="sair()" class="btn btn-warning btn-block">Sair</button>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                    <button onclick="verificaEmail()" id="verificar" class="btn btn-block btn-primary">Verificar e-mail</button>
+                    <button onclick="mudarSenha()" class="btn btn-block btn-primary">Alterar Senha</button>
+                    <button onclick="antesDeDeletar()" class="btn btn-block btn-danger">Deletar minha conta</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id="firebaseui-auth">
+
+        </div>
+        <input type="file" name="pegafoto" id="pegafoto" oninput="enviaFoto()" accept="image/*" style="visibility: hidden;">
+      </div>
+
+            <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body" id="corpoModal">
+                ...
+                </div>
+                <div class="modal-footer" id="botoesModal">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+      
+  
+      <footer class="footer" style="background-color:dodgerblue;">
+        <div class="container" style="color: white;">
+            <a href="./sobre" style="text-decoration: none; color: white;">Gustavo Resende</a>&copy;
+        </div>
+      </footer>
+      <script src="./arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+      <script src="./arquivos/app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+      <script src="./arquivos/autenticacao.js"></script>
+</body>
+</html>

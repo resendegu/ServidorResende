@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <title>Vídeo-Chamadas</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/connectycube@3.7.2/dist/connectycube.min.js"></script>
+    <script src='https://meet.jit.si/external_api.js'></script>
+
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-performance.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="./js/app.js"></script>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="../">
+            <img src="../images/logoresende2.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Servidor Resende" loading="lazy">
+        Servidor Resende
+        </a>
+    </nav>
+
+    <div class="modal fade" tabindex="-1" id="criaUsuario" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Insira as informações básicas:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="emailNovoUser">Email</label>
+                    <input type="email" class="form-control" id="emailNovoUser" aria-describedby="emailHelp" placeholder="Digite seu e-mail...">
+                    <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com ninguém.</small>
+                  </div>
+                <div class="form-group">
+                    <label for="nomeNovoUser">Nome</label>
+                    <input type="text" class="form-control" id="nomeNovoUser" aria-describedby="nameHelp" placeholder="Digite seu nome...">
+                    <small id="nameHelp" class="form-text text-muted">Seu nome para identificação nas chamadas.</small>
+                </div>
+                
+                  <div class="form-group">
+                    <label for="senhaNovoUser1">Crie uma senha</label>
+                    <input type="password" class="form-control" id="senhaNovoUser1" aria-describedby="senhaNovoUser1Help" placeholder="Digite a senha...">
+                    <small id="senhaNovoUser1Help" class="form-text text-muted">Você usará o e-mail e senha para entrar nas video-chamadas.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="senhaNovoUser2">Repita a senha</label>
+                    <input type="password" class="form-control" id="senhaNovoUser2" aria-describedby="senhaNovoUser2Help" placeholder="Digite a senha novamente...">
+                    <small id="senhaNovoUser2Help" class="form-text text-muted">Repita a senha para sua segurança.</small>
+                  </div>
+                  <p class="font-italic" style="display: none; color: red;" id="warn">As senhas não são idênticas. Tente novamente.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" onclick="pegaDadosParaCriar()"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" id="carregandoCriando" style="display:none;"></span> Criar usuário</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container" id="inicio">
+        <div class="jumbotron">
+            <h1 class="display-4">Bem-vindo!</h1>
+            <p class="lead">Este é um serviço de vídeo chamadas gratuitas. Criado por Gustavo Resende e provido por ConnectyCube.</p>
+            <hr class="my-4">
+            <p>Caso nunca tenha usado este serviço, clique no botão para criar uma conta. Caso já tenha criado uma conta, clique em iniciar uma chamada.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#criaUsuario">Criar conta</button> ou
+            <button type="button" class="btn btn-primary" onclick="criarSessao()">Iniciar uma chamada</button>
+        </div>
+    </div>
+
+    <div class="container" id="containerChamada">
+        <div class="embed-responsive embed-responsive-16by9">
+            <video class="embed-responsive-item" src="" id="videoRemoto" allowfullscreen></video>
+        </div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video class="embed-responsive-item" src="" id="videoLocal" allowfullscreen></video>
+        </div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video class="embed-responsive-item" src="" id="compartilhaLocal" allowfullscreen></video>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

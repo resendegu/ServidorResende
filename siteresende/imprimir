@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resende</title>
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./arquivos/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="./arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./arquivos/filedrop.css">
+    <link rel="stylesheet" href="./arquivos/imprimir.css">
+</head>
+<body onload="listaArquivos()">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-performance.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-database.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-storage.js"></script>
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+    <!-- Site -->
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+          <a class="navbar-brand" href="./"><img src="./images/logoresende2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Resende's Server</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./">Início</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login">Login/Cadastro</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./imprimir">Arquivos p/ imprimir  <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./sobre">Sobre</a>
+              </li>
+            </ul>
+          </div>
+          <a href="./login"><img src="./images/profile_placeholder.png" class="rounded float-right" width="40px" id="profilePic"></a>
+          
+        </nav>
+      </header>
+  
+      <!-- Begin page content -->
+        <div class="container">
+          <h3>Servidor de impressão</h3>
+          <div class="row">
+            <div class="col-sm">
+              <!-- Drag and Drop -->
+              <div id="drop-area" style="visibility: hidden;">
+                <form class="my-form">
+                  <p>Arraste e solte os arquivos para enviar (upload)</p> ou
+                  <input type="file" id="fileElem" multiple onchange="handleFiles(this.files)">
+                  
+                  <label class="button" for="fileElem">Escolher arquivos</label>
+                </form>
+                <div class="progress" style="position: relative;">
+                  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress">0%</div>
+                </div>
+              </div>
+              <button type="button" name="btnAtualiza" id="btnAtualiza" onclick="listaArquivos()" class="btn btn-secondary btn-block">Atualizar arquivos <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" style="visibility: hidden;" id="loadingBtn"></span></button>
+            </div>
+            <div class="col-sm">
+              <h6>Arquivos no servidor:</h6>
+              <div class="d-flex p-2 bd-highlight">
+                <div class="overflow-auto" style="height: 170px;">
+                  <div class="list-group" id="arquivos">
+                    <img src="./images/carregamento.gif" class="rounded mx-auto d-block" alt="Carregando" width="60px"><p class="text-center">Carregando arquivos...</p>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
+        
+          
+            
+            
+            
+            
+
+        </div>
+            
+        </div>
+      <footer class="footer" style="background-color:dodgerblue;">
+        <div class="container" style="color: white;">
+            <a href="./sobre" style="text-decoration: none; color: white;">Gustavo Resende</a>&copy;
+        </div>
+      </footer>
+      <script src="./arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+      <script src="./arquivos/imprimir.js"></script>
+      <script src="./arquivos/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Online</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+    <link rel="stylesheet" href="arquivos/modal.css">
+    <link href="arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+    <script src="arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<body>
+    <!-- Firebase App is always required and must be first -->
+    <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-storage.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-performance.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+    
+    
+    <nav id="menu">
+
+
+
+    </nav>
+    <ul id="navpeq">
+
+    </ul>
+    <div id="carregando" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: visible;">
+        <h1 class="titulo">Aguarde...</h1>
+        <h2 class="subtitulo">Carregando prova...</h2>
+        
+        
+        
+    </div>
+    <div id="colunaPrincipal">
+        <div id="coluna1" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: hidden;">
+            
+            <h2 class="subtitulo"><label id="perguntaNome" for="perguntaNome">Insira seu nome:</label></h2>
+            
+            
+            
+        </div>
+        <div id="coluna2" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: hidden;">
+            <h1 class="titulo" id="assunto">Carregando sua prova...</h1>
+            <h2 class="subtitulo" id="descricao"></h2>
+            <p style="color: red;"><b>As questões com asterisco * são de resposta obrigatória</b></p>
+            
+            <div class="prova" id="prova"></div>
+            
+        </div>
+    </div>
+    
+
+    <div id="myModal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header" id="headerModal">
+                <span class="close">&times;</span>
+                <h2 id="tituloModal">Modal Header</h2>
+            </div>
+            <div class="modal-body" id="corpo">
+
+            </div>
+            <div class="modal-footer" id="footerModal">
+                <h3>Servidor Resende</h3>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="arquivos/modal.js"></script>
+    <script src="arquivos/provainfo.js"></script>
+    <script src="arquivos/app.js"></script>
+    <script src="arquivos/verifica.js"></script>
+
+
+</body>
+
+</html>

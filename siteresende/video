@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+  <meta charset="utf-8">
+  <title>
+    Resende's Video
+  </title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    section {
+        align-items: center;
+        background: white;
+        border-radius: 10px;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.425);
+    }
+    body {
+      background-color: rgb(57, 180, 236);
+      display: flex;
+      height: 80vh;
+      padding: 7%;
+      margin: 0;
+      align-items: center;
+      justify-content: center;
+      /*font-family: -apple-system, BlinkMacSystemFont, sans-serif;*/
+      font-family: 'Maven Pro'
+    }
+    #remoteVideo {
+        position: relative;
+      border: 8px solid white;
+      max-height: 20%;
+      max-width: 100%;
+      width: max-content;
+      box-sizing: border-box;
+      padding: 0;
+      box-shadow: rgba(156, 172, 172, 0.2) 0px 2px 2px, rgba(156, 172, 172, 0.2) 0px 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
+    }
+    #localVideo {
+      position: relative;
+      top: 0px;
+      max-width: 20%;
+      margin: 0 50px;
+      border-radius: 2px;
+      padding: 0;
+      box-shadow: rgba(156, 172, 172, 0.2) 0px 2px 2px, rgba(156, 172, 172, 0.2) 0px 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
+    }
+    .copy {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+    /*.title {
+        position: relative;
+        left: 30px;
+        font-size: 15px;
+        color: #34495E;
+    }*/
+    .sub-line {
+        position: absolute;
+        top: 2px;
+        /* left: 36%; */
+        color: black;
+        /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif*/
+        font-family: 'Maven Pro';
+        font-size: 14px;
+        color: #34495E;
+        text-underline-position: above; 
+    } 
+    .footer {
+        position: relative;
+        text-align: center;
+        bottom: 1px;
+        /*left: 45%; */   
+    }
+  </style>
+</head>
+<body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+
+  <!-- Add the standard Performance Monitoring library -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-performance.js"></script>
+  <!-- Previously loaded Firebase SDKs -->
+
+<script>
+  // TODO: Replace the following with your app's Firebase project configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAXRK6LnVgvUUlXiQof-yiqKIjsZDBnaEg",
+    authDomain: "guresende.firebaseapp.com",
+    databaseURL: "https://guresende.firebaseio.com",
+    projectId: "guresende",
+    storageBucket: "guresende.appspot.com",
+    messagingSenderId: "264759236949",
+    appId: "1:264759236949:web:ad745427e0c28206ba37dc",
+    measurementId: "G-2S1WXWF9XT"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Initialize Performance Monitoring and get a reference to the service
+  var perf = firebase.performance();
+  </script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Maven+Pro" />
+    <div class="sub-line" id="header">
+      <a href="./"><img src="images/logoresende2.png" width="60px" height="60px" style="animation: normal;"></a>
+    </div>
+    <!-- <div class="copy">Send your URL to a friend to start a video call</div>-->
+    <section>
+        <video id="localVideo" autoplay muted controls></video>
+        <video id="remoteVideo" poster="images/logoresende4.jpg" autoplay controls></video>
+    <br>
+    <div class="footer">
+        <h4>Feito de <i class="material-icons" style="animation: ease-in;">favorite</i> por Gustavo Resende</h4>
+    </div>
+    </section>
+    <script>
+      var infoSala = document.getElementById 
+      // Generate random room name if needed
+      if (!location.hash) {
+          location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(20);
+      }
+      const roomHash = location.hash.substring(1);
+      var header = document.getElementById('header')
+      header.innerHTML += `Cód. da sala: <a href='./video#${roomHash}'> ${roomHash}</a>`
+
+      // TODO: Replace with your own channel ID
+      const drone = new ScaleDrone('9QxUfsH9dH90wTBe');
+      // Room name needs to be prefixed with 'observable-'
+      const roomName = 'observable-' + roomHash;
+      const configuration = {
+          iceServers: [{
+            urls: [
+                'stun:stun.l.google.com:19302',
+                'stun:stun.ekiga.net',
+                'stun:stun.xten.com',
+                'stun:stunserver.org',
+                'stun:stun1.l.google.com:19302',
+                'stun:stun2.l.google.com:19302',
+                'stun:stun.l.google.com:19302?transport=udp',
+            ]
+          }]
+      };
+      let room;
+      let pc;
+
+      function onSuccess() {};
+      function onError(error) {
+          console.error(error);
+      };
+
+      drone.on('open', error => {
+          if (error) {
+              return console.error(error);
+          }
+          room = drone.subscribe(roomName);
+          room.on('open', error => {
+              if (error) {
+                  onError(error);
+              }
+          });
+          // We're connected to the room and received an array of 'members'
+          // connected to the room (including us). Signaling server is ready.
+          room.on('members', members => {
+              console.log('MEMBERS', members);
+              // If we are the second user to connect to the room we will be creating the offer
+              const isOfferer = members.length === 2;
+              startWebRTC(isOfferer);
+          });
+      });
+
+      // Send signaling data via Scaledrone
+      function sendMessage(message) {
+      drone.publish({
+          room: roomName,
+          message
+      });
+      }
+
+      function startWebRTC(isOfferer) {
+          pc = new RTCPeerConnection(configuration);
+
+          // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
+          // message to the other peer through the signaling server
+          pc.onicecandidate = event => {
+              if (event.candidate) {
+                  sendMessage({'candidate': event.candidate});
+              }
+          };
+
+          // If user is offerer let the 'negotiationneeded' event create the offer
+          if (isOfferer) {
+              pc.onnegotiationneeded = () => {
+                  pc.createOffer().then(localDescCreated).catch(onError);
+              }
+          }
+
+          // When a remote stream arrives display it in the #remoteVideo element
+          pc.ontrack = event => {
+              const stream = event.streams[0];
+              if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
+                  remoteVideo.srcObject = stream;
+              }
+          };
+
+          navigator.mediaDevices.getUserMedia({
+              audio: true,
+              video: true,
+          }).then(stream => {
+              // Display your local video in #localVideo element
+              localVideo.srcObject = stream;
+              // Add your stream to be sent to the conneting peer
+              stream.getTracks().forEach(track => pc.addTrack(track, stream));
+          }, onError);
+
+          // Listen to signaling data from Scaledrone
+          room.on('data', (message, client) => {
+              // Message was sent by us
+              if (client.id === drone.clientId) {
+                  return;
+              }
+
+              if (message.sdp) {
+              // This is called after receiving an offer or answer from another peer
+              pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
+                  // When receiving an offer lets answer it
+                  if (pc.remoteDescription.type === 'offer') {
+                  pc.createAnswer().then(localDescCreated).catch(onError);
+                  }
+              }, onError);
+              } else if (message.candidate) {
+              // Add the new ICE candidate to our connections remote description
+              pc.addIceCandidate(
+                  new RTCIceCandidate(message.candidate), onSuccess, onError
+              );
+              }
+              
+              
+          });
+          
+              }
+              var vid = document.getElementById("remoteVideo");
+            vid.onloadeddata = function() {
+              vid.webkitRequestFullScreen();
+          //document.getElementById("remoteVideo").requestFullscreen();
+      }
+
+      function localDescCreated(desc) {
+          pc.setLocalDescription(
+              desc,
+              () => sendMessage({'sdp': pc.localDescription}),
+              onError
+          );
+      }
+    </script>
+    <br>
+    
+
+    <script>
+      var vid = document.getElementById("remoteVideo");
+      vid.onloadeddata = function() {
+        vid.webkitRequestFullScreen();
+        }
+    </script> 
+      
+</body>
+</html>

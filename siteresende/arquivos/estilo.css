@@ -1,0 +1,443 @@
+@charset "UTF-8";
+html {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    overflow: visible;
+}
+
+nav#menu {
+    margin-top: 0px;
+    height: fit-content;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: blue;
+    text-align: left;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: -10px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+nav#menu ul {
+    position: relative;
+    list-style: none;
+    text-transform: uppercase;
+    float: right;
+    padding: 0;
+}
+
+nav#menu li:hover {
+    background-color: blue;
+}
+
+nav#menu li {
+    display: inline-block;
+    background-color: #4177eb;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 2.5px;
+    transition: background-color 0.5s;
+}
+nav#menu a {
+    color: white;
+    text-decoration: none;
+}
+
+nav#menu a:hover {
+    color: white;
+}
+
+div#peq {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: blue;
+    margin-top: -10px;
+    margin-left: -10px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#navpeq {
+    position: relative;
+    visibility: hidden;
+    opacity: 0;
+    float: right;
+    padding: 0;
+    list-style: none;
+    width: 150px;
+    transition: opacity 0.5s;
+    margin-right: 38px;
+    margin-top: 40px;
+    z-index: 2;
+}
+ul#navpeq li {
+    position: relative;
+    margin: auto;
+}
+ul#navpeq li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: rgb(6, 31, 250);
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 120%;
+}
+
+ul#navpeq li a:focus {
+    background-color: #dddddd;
+    transition: background-color 0.1s;
+}
+div#colunaPrincipal {
+    position: absolute;
+    max-width: 100%;
+    align-items: center;
+    height: 80%;
+    justify-items: center;
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+    margin-top: 50px;
+    z-index: 1;
+}
+
+section#pastas {
+    position: relative;
+    margin-top: 0; 
+    background: rgb(255, 255, 255); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.425);
+    max-width: 80%;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px; 
+    padding: 32px 24px; 
+    border-radius: 8px;
+    /*min-width: 75%;*/
+    transition: background-color 0.5s;
+    font-size: small;
+}
+section#arquivos {
+    position: relative;
+    margin-top: 0; 
+    background: rgb(255, 255, 255); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.425);
+    max-width: 80%;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px; 
+    padding: 32px 24px; 
+    border-radius: 8px;
+    /*min-width: 75%;*/
+    transition: background-color 0.5s;
+    font-size: small;
+}
+
+div.colunasdeconteudo {
+    position: relative;
+    float: left;
+    margin-top: 0; 
+    background: rgb(255, 255, 255); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.425);
+    max-width: 340px;
+    width: 270px;
+    margin-top: 10px;
+    margin-left: 10px; 
+    padding: 32px 24px; 
+    border-radius: 8px;
+    /*min-width: 75%;*/
+    transition: background-color 0.5s;
+}
+div.colunasdeconteudo:hover {
+    background-color: rgb(238, 238, 238);
+}
+div.colunasProvas {
+    position: relative;
+    float: left;
+    margin-top: 0; 
+    background: rgb(255, 255, 255); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.425);
+    margin-top: 10px;
+    margin-left: 5px; 
+    padding: 32px 24px; 
+    border-radius: 8px;
+    /*min-width: 75%;*/
+    transition: background-color 0.5s;
+}
+
+h1.titulo { 
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.6); 
+    margin: 0 0 16px;
+}
+
+
+h2.subtitulo { 
+    color: #0026ff; 
+    font-weight: bold; 
+    font-size: 16px; 
+    margin: 0 0 8px; 
+}
+
+a.botaoPadrao {
+    display: block; 
+    text-align: center; 
+    background: #0599ee; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    color: white; 
+    padding: 5px; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    transition: background-color 0.5s; 
+    font-size: smaller;
+}
+
+a.botaoPadrao:hover {
+    background-color: rgb(2, 190, 247);
+}
+a.botaoPasta {
+    display: block; 
+    background: #d1d1d15e; 
+    text-decoration: none; 
+    color: rgb(0, 0, 0); 
+    padding: 8px;
+    border: black solid thin; 
+    transition: background-color 0.5s; 
+    font-size: smaller;
+}
+
+a.botaoArquivo {
+    display: block; 
+    background: #d1d1d15e; 
+    text-decoration: none; 
+    color: rgb(0, 0, 0); 
+    padding: 8px;
+    border: black solid thin; 
+    /*transition: background-color 0.1s;*/
+    font-size: smaller;
+}
+a.botaoArquivo:active {
+    background-color: white;
+}
+
+div.areaUser {
+    background-color: lightgrey;
+    position: fixed;
+    margin-top: 45px;
+    width: 100%;
+    height: 100%;
+    margin-left: -10px;
+}
+
+img#foto {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    max-width: 75px;
+    max-height: 75px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    
+}
+
+div#firebaseui-auth {
+    position: relative;
+    margin-top: 5px;
+    
+}
+
+div#deslogado {
+    position: absolute;
+    
+}
+
+ul.firebaseui-idp-list {
+    position: absolute;
+    width: 600%;
+}
+a.botaoPadrao#deletar {
+    background-color: red;
+}
+
+/* Formatação de imagens com legendas */
+figure.fotolegenda{
+	position: relative;
+	border: 8px solid white;
+    box-shadow: 1px 1px 4px black;
+    width: 75px;
+    border-radius: 50%;
+    text-align: center;
+}
+figure.fotolegenda img{
+	width: 100%;
+	height: 100%
+}
+figure.fotolegenda figcaption{
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+    width: 75px;
+    height: 75px;
+	padding: 4px;
+	box-sizing: border-box;
+    transition: opacity 1s;
+    border-radius: 50%;
+    padding-top: 40%;
+    
+}
+figure.fotolegenda:hover figcaption{
+	opacity: 1;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: grey;
+}
+
+#myBar {
+    width: 0%;
+    height: 30px;
+    background-color: #0144c2;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white;
+}
+
+.footer {
+    line-height: 30px;
+    width: 100%;
+    position: fixed;
+    background-color: #0026ff;
+    color: white;
+    margin-left: -8px;
+    height: 100px;
+}
+
+.footer p {
+    text-align: center;
+    font-size: small;
+    margin-top: -30px;
+    text-decoration: rgb(131, 131, 131);
+}
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+a.addNovaOpcaoBotao {
+    display: block; 
+    text-align: center; 
+    background: #a9bfcc; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    color: white; 
+    padding: 3px; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    transition: background-color 0.5s; 
+    font-size: smaller;
+    width: 110px;
+
+}
+a.addNovaOpcaoBotao:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+a.addNovaQuestao {
+    position: absolute;
+    object-position: bottom;
+    display: block; 
+    text-align: center; 
+    background: #a9bfcc; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    color: white; 
+    padding: 3px; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    transition: background-color 0.5s; 
+    font-size: smaller;
+    width: 80%;
+    height: 22px;
+
+}
+a.addNovaQuestao:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.deleta {
+    transition: color 0.5s;
+}
+
+.material-icons.deleta:hover {
+    color: red;
+}
+
+.material-icons.edita {
+    transition: color 0.5s;
+}
+
+.material-icons.edita:hover {
+    color: rgb(41, 41, 255);
+}
+
+.material-icons.correta {
+    color: rgb(24, 228, 24);
+}
+
+.material-icons.incorreta {
+    color: red;
+}
+
+a.listaUsersBotao {
+    display: block; 
+    text-align: center; 
+    background: #2e8ec5;  
+    text-decoration: none; 
+    color: rgb(255, 255, 255); 
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 2px; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    transition: background-color 0.5s; 
+    font-size: smaller;
+    width: fit-content;
+}
+a.listaUsersBotao:hover {
+    background-color: rgb(68, 0, 255);
+}
+
+a.detalhesAvancados {
+    display: block; 
+    text-align: center; 
+    background: #4b88ac; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    color: white; 
+    padding: 3px; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.425);
+    transition: background-color 0.5s; 
+    font-size: smaller;
+    width: fit-content;
+
+}
+a.detalhesAvancados:hover {
+    background-color: rgb(31, 108, 172);
+}

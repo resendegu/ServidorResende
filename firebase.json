@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site":"resende",
+    "public": "siteresende",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

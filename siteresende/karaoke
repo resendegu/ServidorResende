@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resende's Karaokê</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+    <link rel="stylesheet" href="arquivos/radio.css">
+    <link rel="stylesheet" href="arquivos/modal.css">
+</head>
+
+<body onload="listaArquivos()">
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAXRK6LnVgvUUlXiQof-yiqKIjsZDBnaEg",
+            authDomain: "guresende.firebaseapp.com",
+            databaseURL: "https://guresende.firebaseio.com",
+            projectId: "guresende",
+            storageBucket: "guresende.appspot.com",
+            messagingSenderId: "264759236949",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+    <nav id="menu">
+
+
+
+    </nav>
+    <ul id="navpeq">
+
+    </ul>
+    <div id="colunaPrincipal">
+        <div id="coluna1" class="colunasdeconteudo" style="width: 100%;">
+            <h1 class="titulo">Karaokê</h1>
+            <h2 class="subtitulo">Cante com seus amigos</h2>
+            <section id="pastas">
+                <h2 class="subtitulo">Músicas</h2>
+                <div id="radioDasUp" class="radio-toolbar">
+
+                </div>
+                <a href="#" onclick="abrirArquivo()" class="botaoPadrao">Cantar!!!</a>
+            </section>
+
+
+        </div>
+        <div id="myModal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" id="headerModal">
+                    <span class="close">&times;</span>
+                    <h2 id="tituloModal">Modal Header</h2>
+                </div>
+                <div class="modal-body" id="corpo">
+
+                </div>
+                <div class="modal-footer" id="footerModal">
+                    <h3>Servidor Resende</h3>
+                </div>
+            </div>
+        </div>
+        <script src="arquivos/app.js"></script>
+        <script src="arquivos/modal.js"></script>
+        <script src="arquivos/verifica.js"></script>
+        <script>
+            var imprimirRef = firebase.storage().ref('/karaoke')
+
+            function listaArquivos() {
+                imprimirRef.listAll().then(function (objetos) {
+                    var c = 1
+                    objetos.items.forEach(function (arquivo) {
+                        var radioDasUp = document.getElementById('radioDasUp')
+                        radioDasUp.innerHTML +=
+                            `<input type="radio" id="${c}" name="radioPastas" value="${arquivo.name}" onclick="arquivoSelecionado(this)"><label for="${c}">${arquivo.name}</label><br>`
+                        c++
+                    })
+                }).catch(function (error) {
+                    abrirModal('Erro ao buscar arquivos', error.code, 'red')
+                })
+            }
+            let arquivoParaAbrir
+
+            function arquivoSelecionado(arquivo) {
+                arquivoParaAbrir = arquivo.value
+            }
+
+            function abrirArquivo() {
+                try {
+                    imprimirRef.child(arquivoParaAbrir).getDownloadURL().then(function (url) {
+                        abrirModal(
+                            'Cantando ' + arquivoParaAbrir,
+                            `<video src="${url}" style="height: 450px" id="files" controls></video>`
+                        )
+                    }).catch(function (error) {
+                        let mensagem
+                        switch (error.code) {
+                            case 'storage/object-not-found':
+                                mensagem =
+                                    'Desculpe, mas parece que este objeto foi apagado dos nossos servidores.'
+                                break;
+
+                            case 'storage/unauthorized':
+                                mensagem =
+                                    'Você não tem a devida autorização para acessar este recurso. Por favor, contate o desenvolvedor'
+                                break;
+
+                            case 'storage/canceled':
+                                mensagem = 'Por algum motivo, esta ação foi cancelada.'
+                                break;
+
+                            case 'storage/unknown':
+                                mensagem =
+                                    'Um erro inesperado e desconhecido ocorreu. Por favor tente novamente!'
+                                break;
+
+                            case 'storage/invalid-argument':
+                                mensagem = 'Você deve selecionar um arquivo primeiro'
+                                break;
+                        }
+                        abrirModal('Ocorreu um erro', `<h2 class="subtitulo">${mensagem}</h2>`, 'red')
+                    })
+                } catch (error) {
+                    if (error.code == 'storage/invalid-argument') {
+                        abrirModal('Erro',
+                            `<h2 class="subtitulo">Você deve selecionar algum arquivo para ser aberto.</h2>`, 'red')
+                    }
+                }
+            }
+            var currentUser
+
+            function liberaBotaoApagar(usuarioAtual) {
+                currentUser = usuarioAtual
+                let sectionPastas = document.getElementById('pastas')
+                sectionPastas.innerHTML +=
+                    '<a href="#" onclick="excluiArquivo()" class="botaoPadrao" id="deletar">Deletar arquivo</a>'
+            }
+
+            function excluiArquivo() {
+                try {
+                    imprimirRef.child(arquivoParaAbrir).delete().then(function () {
+                        listaArquivos()
+                        abrirModal('Sucesso', 'Arquivo deletado com sucesso')
+                    }).catch(function (error) {
+                        let mensagem
+                        switch (error.code) {
+                            case 'storage/object-not-found':
+                                mensagem =
+                                    'Desculpe, mas parece que este objeto foi apagado dos nossos servidores.'
+                                break;
+
+                            case 'storage/unauthorized':
+                                mensagem =
+                                    'Você não tem a devida autorização para acessar este recurso. Por favor, contate o desenvolvedor'
+                                break;
+
+                            case 'storage/canceled':
+                                mensagem = 'Por algum motivo, esta ação foi cancelada.'
+                                break;
+
+                            case 'storage/unknown':
+                                mensagem =
+                                    'Um erro inesperado e desconhecido ocorreu. Por favor tente novamente!'
+                                break;
+
+                            case 'storage/invalid-argument':
+                                mensagem = 'Você deve selecionar um arquivo primeiro'
+                                break;
+                        }
+                        abrirModal('Ocorreu um erro', `<h2 class="subtitulo">${mensagem}</h2>`, 'red')
+                    })
+                } catch (error) {
+                    if (error.code == 'storage/invalid-argument') {
+                        abrirModal('Erro',
+                            `<h2 class="subtitulo">Você deve selecionar algum arquivo para ser deletado.</h2>`,
+                            'red')
+                    }
+                }
+
+
+            }
+        </script>
+        <script src="arquivos/fbmessaging.js"></script>
+
+</body>
+
+</html>

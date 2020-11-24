@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Online</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+    <link rel="stylesheet" href="arquivos/modal.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+    <script src="arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+</head>
+
+<body>
+    <!-- Firebase App is always required and must be first -->
+    <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-storage.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-performance.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+    
+    
+    <nav id="menu">
+
+
+
+    </nav>
+    <ul id="navpeq">
+
+    </ul>
+    <div id="carregando" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: visible;">
+        <h1 class="titulo">Aguarde...</h1>
+        <h2 class="subtitulo">Carregando provas...</h2>
+    </div>
+    <div id="colunaPrincipal">
+        <div id="coluna1" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: hidden;">
+            <h1 class="titulo">Editor de Testes/Provas online</h1>
+            <a href="#" class="botaoPadrao" onclick="Vertestes()">Ver meus testes/provas</a>
+            <h2 class="subtitulo">Caso queira criar ou excluir provas, <a href="provaonline">clique aqui</a></h2>
+            
+        </div>
+        <div id="coluna2" class="colunasdeconteudo" style="width: 100%; max-width: 100%; visibility: hidden;">
+            <h1 class="titulo" id="assunto">Carregando sua prova...</h1>
+            <h2 class="subtitulo" id="descricao"></h2><br>
+            Valor da prova: <b><label id="valorProva"></label></b> pts
+            <div class="colunasdeconteudo" id="colunaprova" style="width: 100%; min-width: 85%;"></div>
+            <a class="addNovaQuestao" onclick="addNovaQuestao()">+ Criar questão</a>
+            <div class="colunasdeconteudo" id="infoDoParticipante" style="width: 100%; min-width: 85%;">
+                <h1 class="titulo">Configurações da prova</h1>
+                <h2 class="subtitulo">Modo de prova:</h2>
+                <input type="radio" name="modoProva" id="modoLoginServidor" onclick="modoProva(this.id)">
+                <label for="modoLoginServidor">Obrigatório login no Servidor Resende</label>
+                <br>
+                <input type="radio" name="modoProva" id="modoAnonimo" onclick="modoProva(this.id)">
+                <label for="modoAnonimo">Anônimo</label>
+                <br><br>
+                <h2 class="subtitulo">Outras configurações:</h2>
+                <input type="checkbox" name="pedirNome" id="pedirNome" onclick="confPerguntaNome(this.checked)">
+                <label for="pedirNome">Perguntar o nome</label>
+                <br>
+                <input type="checkbox" name="whitelist" id="whitelist" onclick="whitelist(this.checked)">
+                <label for="whitelist">Permitir apenas à e-mails específicos (WhiteList)</label>
+                <div class="whitelistDiv" id="whitelistDiv" style="display: none;">
+                    <textarea name="listaEmails" id="listaEmails" cols="30" rows="3" placeholder="Cole aqui a lista de e-mails permitidos" onchange="whitelist(true, true, this.value)"></textarea>
+                </div>
+                <br><br>
+                <div><a class="botaoPadrao" onclick="darPermissao()">Permitir edição com outras contas logadas</a></div>
+                
+
+                
+            </div>
+            <div class="colunasdeconteudo" id="preview" style="width: 100%; min-width: 85%;">
+                <b>Todas as alterações são salvas automaticamente.</b><br>
+                Link da sua prova online: <a id="linkProvaOnline" href=""></a>
+                <br><br>
+                <a class="botaoPadrao" onclick="visualizarProva()">Visualizar sua prova online</a>
+            </div>
+            
+        </div>
+        
+            
+        </div>
+    </div>
+    
+    
+
+    <div id="myModal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header" id="headerModal">
+                <span class="close">&times;</span>
+                <h2 id="tituloModal">Modal Header</h2>
+            </div>
+            <div class="modal-body" id="corpo">
+
+            </div>
+            <div class="modal-footer" id="footerModal">
+                <h3>Servidor Resende</h3>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="arquivos/editorprova.js"></script>
+    <script src="arquivos/modal.js"></script>
+    <script src="arquivos/app.js"></script>
+    <script src="arquivos/verifica.js"></script>
+    
+    
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resende's Simet Test</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+</head>
+
+<body>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+    <nav id="menu">
+
+
+
+    </nav>
+    <ul id="navpeq">
+
+    </ul>
+    <script src="arquivos/app.js"></script>
+    <iframe src="https://beta.simet.nic.br/widget.html" height="350px" width="100%" style="border:none"></iframe>
+    <footer class="footer">
+        &nbsp; Resende's Server - Servidor Resende<br>
+         
+        <p><i>Resende's Server</i> ou <i>Servidor Resende</i> são marcas fictícias.</p>
+        <p style="text-align: left; margin-top: -10px;">&nbsp;<a href="https://about.me/resende.gu/" target="_blank" >Gustavo Resende</a> &copy;</p>
+    </footer>
+</body>
+
+</html>

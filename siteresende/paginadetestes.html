@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de testes</title>
+</head>
+<body>
+    <textarea name="teste" id="teste" cols="30" rows="10" onchange="teste(this.value)"></textarea>
+    <script>
+        function teste(txt) {
+            try {
+                var email = 'sadasdgurasdasendasde13-gmail_co'
+                console.log(txt.indexOf(email))
+                var cortado = txt.slice(txt.indexOf(email), txt.indexOf(email) + email.length)
+                console.log(cortado) 
+            } catch (error) {
+                console.log(error)
+            }
+            var hora = new Date().getHours()
+            var min = new Date().getMinutes()
+            var sec = new Date().getSeconds()
+            var data = new Date().getDate()
+            var mes = new Date().getMonth()
+            var ano = new Date().getFullYear()
+            
+            console.log(ano)
+            
+        }
+        console.log(document.getElementById('teste').value)
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resende's Server</title>
+    <link rel="icon" type="image/gif" href="../images/animated_favicon1.gif">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./arquivos/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="./arquivos/AST-Notif-master/css/ast-notif.min.css" rel="stylesheet">
+</head>
+<body onload="initApp()">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-performance.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-database.js"></script>
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    
+
+    <!-- Site -->
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+          <a class="navbar-brand" href="./"><img src="./images/logoresende2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Resende's Server</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="./">Início <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login">Login/Cadastro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./imprimir">Arquivos p/ imprimir</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./sobre">Sobre</a>
+              </li>
+            </ul>
+          </div>
+          <a href="./login"><img src="./images/profile_placeholder.png" class="rounded float-right" width="40px" id="profilePic"></a>
+        </nav>
+      </header>
+  
+      <!-- Begin page content -->
+      <div class="container" id="carregamento"><img src="./images/carregamento.gif" class="rounded mx-auto d-block" alt="..." width="75px"></div>
+      <div class="container" id="naoLogado" style="display: none;">
+        <h1 class="mt-5">Bem-vindo!</h1>
+        <p class="lead">Todos os serviços e utilidades deste site são gratuitos, e mantidos por <a href="./sobre" style="text-decoration: none;">Gustavo Resende</a>. O uso é controlado, e você detém total responsabilidade de suas ações aqui, ok!</p>
+        <p>Caso ainda não tenha uma conta, ou queira fazer login, <a href="./login">clique aqui</a>!</p>
+      </div>
+
+      <div class="container" id="logado" style="display: none;">
+        <h3>O que deseja fazer, <label id="nomeLogado"></label>?</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a role="button" class="btn btn-outline-primary btn-md btn-block" href="./encurtador">Encurtador de URLs/Links</a>
+                </div>
+                <div class="col">  
+                    <a role="button" class="btn btn-outline-primary btn-md btn-block" href="./imprimir">Arquivos para impressão</a>
+                </div>
+            </div>
+            <br>
+            <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="./my">Acessar meus arquivos</a>
+            <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="./chat">Acessar chat público</a>
+        
+            <br>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle btn-md" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Velocidade de conexão
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./speedtest">SpeedTest&trade;</a>
+                    <a class="dropdown-item" href="./testedevelocidade">OpenSpeedTest&trade;</a>
+                    <a class="dropdown-item" href="./simet">Simet&trade;</a>
+                    </div>
+                </div>
+                <br>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle btn-md" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Links externos úteis
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" target="_blank" href="http://200.202.216.170:50043/wbc-st5/login.faces?uat=5">BetimCard Recargas</a>
+                    <a class="dropdown-item" target="_blank" href="http://fiemg.com.br/pe">Portal do Aluno - SENAI</a>
+                    <a class="dropdown-item" target="_blank" href="http://netacad.com/">Cisco NetAcad</a>
+                    </div>
+                </div>
+            
+            
+        </div>
+        
+        
+        
+      </div>
+  
+      <footer class="footer" style="background-color:dodgerblue;">
+        <div class="container" style="color: white;">
+            <a href="./sobre" style="text-decoration: none; color: white;">Gustavo Resende</a>&copy;
+        </div>
+      </footer>
+      <script src="./arquivos/AST-Notif-master/js/ast-notif.min.js"></script>
+      <script src="./arquivos/app.js"></script>
+      <script src="./arquivos/index.js"></script>
+</body>
+</html>

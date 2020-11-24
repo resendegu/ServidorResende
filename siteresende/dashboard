@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resende's Dashboard</title>
+    <style>
+        body{
+            margin: auto;
+            padding-top: 5px;
+        }
+        .user {
+            position: relative;
+            background: rgba(19, 138, 235, 0.664);
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 80%;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(20, 95, 233, 0.425);
+            text-align: center;
+            align-content: center;
+            visibility: visible;
+        }
+        #loader {
+            font-size: 40pt;
+            visibility: visible;
+            width: 100%;
+            height: 2000px;
+            background: blue;
+            align-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 50%;
+
+        }
+        section {
+            margin: auto;
+            text-align: center;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body onload="checkVerifica(), checkVideo()">
+    <script src="arquivos/dashboard.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyAXRK6LnVgvUUlXiQof-yiqKIjsZDBnaEg",
+              authDomain: "guresende.firebaseapp.com",
+              databaseURL: "https://guresende.firebaseio.com",
+              projectId: "guresende",
+              storageBucket: "guresende.appspot.com",
+              messagingSenderId: "264759236949"
+            };
+            firebase.initializeApp(config);
+            
+        </script>
+        <div id="loader">Carregando...</div>
+            <div id="emailVerifica" class="user">
+                <h3>Controle de Verificação de e-mail</h3>
+                <section>
+                    <input type="radio" name="verifica" id="liberadoVerifica" onclick="liberaVerifica()"><label for="liberadoVerifica">Liberado</label>
+                    <input type="radio" name="verifica" id="bloqueadoVerifica" onclick="bloqueiaVerifica()"><label for="bloqueadoVerifica">Bloqueado</label>
+                    <button onclick="checkVerifica()">Atualizar</button>
+                </section>
+            </div>
+            <br>
+            <div id="mudaVideoConta" class="user">
+                <h3>Mudar conta de vídeo Daily.co</h3>
+                <section>
+                    <input type="radio" name="conta" id="guresende" onclick="defGuresende()"><label for="guresende">guresende</label>
+                    <input type="radio" name="conta" id="resende" onclick="defResende()"><label for="resende">resende</label>
+                    <button onclick="checkVideo()">Atualizar</button>
+                </section>
+            </div>
+            <br>
+            <div id="mudaSenhaSeguranca" class="user">
+                <h3>Senha de segurança da Dashboard</h3>
+                <section>
+                    <input type="password" name="segurancaSenha" id="segurancaSenha">
+                    <input type="checkbox" name="mostraSenha" id="mostrasenha" onchange="senhaVisible()"><label for="mostraSenha" id="labelMostra">Mostrar</label><br>
+                    <button onclick="enviaSenha()">Mudar</button>
+                    <button onclick="checkSenha()">Atualizar</button>
+                </section>
+            </div>
+        
+
+    <script>
+        function tiraLoader() {
+            var loader = document.getElementById('loader')
+            loader.remove()
+        }
+        //Script da verificação de e-mail
+        var dbref_verifica = firebase.database().ref('/ServidorResende/verificacao/')
+        var radioVerifica = document.getElementsByName('verifica')
+        function checkVerifica() {
+            dbref_verifica.on('child_added', function (data) {
+                //alert(data.key)
+                if (data.val() == 'bloqueado') {
+                    radioVerifica[1].setAttribute('checked', true)
+                } else if (data.val() == 'liberado') {
+                    radioVerifica[0].setAttribute('checked', true)
+                }
+            })
+        }
+        function liberaVerifica() {
+            dbref_verifica.set({
+                'pode': 'liberado'
+
+            })
+            checkVerifica()
+        }
+
+        function bloqueiaVerifica() {
+            dbref_verifica.set({
+                'pode': 'bloqueado'
+            })
+            checkVerifica()
+        }
+
+         //Script de mudança de senha
+        var dbref_senha = firebase.database().ref('/ServidorResende/seguranca/')
+        var campoSenha = document.getElementById('segurancaSenha')
+        var mostraSenha = document.getElementById('mostrasenha')
+        var labelSenha = document.getElementById('labelMostra')
+        function checkSenha() {
+            dbref_senha.on('child_added', function (data) {
+                campoSenha.value = data.val()
+            })
+        }
+        function senhaVisible() {
+            if (mostraSenha.checked == true) {
+                labelSenha.innerText = 'Esconder'
+                campoSenha.type = 'text'
+            } else {
+                labelSenha.innerText = 'Mostrar'
+                campoSenha.type = 'password'
+            }
+        }
+        function enviaSenha() {
+            dbref_senha.set({
+                'dashboard': campoSenha.value
+            })
+        }
+        //Script troca de conta de video
+        var dbref_video = firebase.database().ref('/ServidorResende/video/')
+        var radioVideo = document.getElementsByName('conta')
+        function checkVideo() {
+            dbref_video.on('child_added', function (data) {
+                if (data.val() == 'guresende.daily.co') {
+                    radioVideo[0].setAttribute('checked', true)
+                } else if (data.val() == 'resende.daily.co') {
+                    radioVideo[1].setAttribute('checked', true)
+                }
+            })
+        }
+        function defGuresende() {
+            dbref_video.set({
+                'conta': 'guresende.daily.co'
+            })
+            checkVideo()
+        }
+        function defResende() {
+            dbref_video.set({
+                'conta': 'resende.daily.co'
+            })
+            checkVideo()
+        }
+    </script>
+</body>
+</html>

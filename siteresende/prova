@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resende's Exams</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+</head>
+<body>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+      <nav id="menu">
+        
+        
+        
+      </nav>
+      <ul id="navpeq">
+        
+      </ul>
+      <div id="colunaPrincipal">
+        <h1 class="titulo">Provas e Simulados</h1>
+        <h2 class="subtitulo">Provas Anteriores de várias instituições</h2>
+        <h2 class="subtitulo">A prova é online e você pode fazê-la quantas vezes quiser</h2>
+          <div class="colunasProvas">
+              <h1 class="titulo">PUC Minas</h1>
+              <a href="https://forms.gle/GytiMTqamTjeANuH6" target="_blank" class="botaoPadrao"> 2º Semestre de 2018 - Graduação</a>
+              
+          </div>
+          <div class="colunasProvas">
+            <h1 class="titulo">SENAI-MG</h1>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxwd7K0AtSQIn8oztR0Xed-cFEBKxtbFAYk8MGagJZbZkBVQ/viewform?usp=sf_link" target="_blank" class="botaoPadrao">1º Semestre de 2018 - APRENDIZAGEM</a>
+        </div>
+      </div>
+      
+      <script src="arquivos/app.js"></script>
+</body>
+</html>

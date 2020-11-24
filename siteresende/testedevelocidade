@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resende's Teste de Velocidade</title>
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
+    <link rel="stylesheet" href="arquivos/estilo.css">
+</head>
+<body>
+    <div id="peq">
+        <a href="./"><img src="images/Resende.gif"></a>
+        <a href="#"><img src="images/menu.png" alt="Menu" width="40px" onclick="mostraMenu()" style="float: right;"></a>
+    </div>
+      <nav id="menu">
+        
+        
+        
+      </nav>
+      <ul id="navpeq">
+        
+      </ul>
+      <script src="arquivos/app.js"></script>
+      <div style="text-align:right; width: 81%; height: 78%; align-items: center; padding-top: 50px;"><div style="min-height:360px;"><div style="width:100%;height:0;padding-bottom:50%;position:relative;"><iframe style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;border:none;overflow:hidden !important;" src="//openspeedtest.com/Get-widget.php"></iframe></div></div>Provido por  <a href="http://openspeedtest.com">OpenSpeedtest.com</a></div>
+    </div>
+</body>
+</html>
