@@ -62,9 +62,10 @@
             <img class="card-img-top" src="images/eu.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Eu sou o Resende!</h5>
-              <p class="card-text">Amo tecnologia e faço dela meu hobby.</p>
+              <p class="card-text"></p>
               <a href="https://instagram.com/resende.gu" target="_blank" class="btn btn-primary">Instagram</a>
-              <a href="mailto:guresende13@gmail.com" target="_blank" class="btn btn-primary">E-mail</a>
+              <a href="mailto:contato@gustavoresende.net" target="_blank" class="btn btn-primary">E-mail</a>
+              <a href="https://github.com/resendegu" target="_blank" class="btn btn-primary">GitHub</a>
             </div>
           </div>
       </div>
