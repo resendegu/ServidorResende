@@ -33,7 +33,7 @@ function verificaLink() {
                 AstNotif.notify("Desculpe :(", "Este ID já está sendo utilizado em outro link. Tente outro ID. ;)", '', {'length': 7000, 'bgcolor': 'red'});
             } else {
                 encurtadorRef.child(nomeNovo).set(objeto).then(() => {
-                    AstNotif.dialog("Link curto criado!", `Este é o link curto:<br><a href="https://linkresende.web.app#${nomeNovo}">linkresende.web.app#${nomeNovo}</a>`, {'positive': 'Ok', 'negative': '', 'icon': false});
+                    AstNotif.dialog("Link curto criado!", `Este é o link curto:<br><a href="https://links.gustavoresende.net#${nomeNovo}">links.gustavoresende.net#${nomeNovo}</a>`, {'positive': 'Ok', 'negative': '', 'icon': false});
                 })
             }
     

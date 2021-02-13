@@ -69,7 +69,7 @@
             <span class="text-muted">(este será o ID para encurtar)</span>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">linkresende.web.app#</label>
+                    <label class="input-group-text" for="inputGroupSelect01">links.gustavoresende.net#</label>
                 </div>
                 <input type="text" id="nomeNovo" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                 
