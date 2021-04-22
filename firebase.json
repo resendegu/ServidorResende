@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"resende",
+    "site": "resende",
     "public": "siteresende",
     "ignore": [
       "firebase.json",
