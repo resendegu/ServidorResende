@@ -63,7 +63,7 @@
             <div class="card-body">
               <h5 class="card-title">Eu sou o Resende!</h5>
               <p class="card-text"></p>
-              <a href="https://instagram.com/resende.gu" target="_blank" class="btn btn-primary">Instagram</a>
+              <a href="https://instagram.com/resendegu" target="_blank" class="btn btn-primary">Instagram</a>
               <a href="mailto:gustavo@resende.app" target="_blank" class="btn btn-primary">E-mail</a>
               <br>
               <small class="text-muted">E-mail: gustavo@resende.app</small>
@@ -71,6 +71,7 @@
               <a href="https://github.com/resendegu" target="_blank" class="btn btn-primary">GitHub</a>
             </div>
           </div>
+          Página ainda em desenvolvimento :-)!
       </div>
   
       <footer class="footer" style="background-color:dodgerblue;">
